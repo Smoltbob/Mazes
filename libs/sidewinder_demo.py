@@ -2,7 +2,7 @@
 from grid import *
 from sidewinder import *
 
-grid = Grid(6,6)
+grid = Grid(40,40)
 Sidewinder(grid)
 print(grid)
-
+grid.to_svg()

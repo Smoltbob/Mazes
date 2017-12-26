@@ -5,3 +5,4 @@ from binary_tree import *
 grid = Grid(6,6)
 Binary_tree(grid)
 print(grid)
+grid.to_svg()

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from cell import *
 from random import randint
+import svgwrite
 
 class Grid():
 
@@ -48,6 +49,30 @@ class Grid():
             output += top + "\n"
             output += bottom + "\n" 
         return output
+
+    def to_svg(self, cell_size = 30):
+        color = "black"
+        img_width = cell_size * self.columns
+        img_height = cell_size * self.rows
+        
+        img = svgwrite.Drawing(filename="maze.svg", debug=True)
+
+        for cell in self.each_cell():
+            x1 = cell.column * cell_size
+            y1 = cell.row * cell_size
+            x2 = (cell.column + 1) * cell_size
+            y2 = (cell.row + 1) * cell_size
+
+            if not cell.north:
+                img.add(img.line(start=(x1,y1), end=(x2,y1), stroke=color))
+            if not cell.west:
+                img.add(img.line(start=(x1,y1), end=(x1,y2), stroke=color))
+
+            if not cell.islinked(cell.east):
+                img.add(img.line(start=(x2,y1), end=(x2,y2), stroke=color))
+            if not cell.islinked(cell.south):
+                img.add(img.line(start=(x1,y2), end=(x2,y2), stroke=color))
+            img.save()
 
     """
     Creates the grid of initialized cells
