@@ -50,12 +50,12 @@ class Grid():
             output += bottom + "\n" 
         return output
 
-    def to_svg(self, cell_size = 30):
+    def to_svg(self, cell_size = 30, name="maze.svg"):
         color = "black"
         img_width = cell_size * self.columns
         img_height = cell_size * self.rows
         
-        img = svgwrite.Drawing(filename="maze.svg", debug=True)
+        img = svgwrite.Drawing(filename=name, debug=True)
 
         for cell in self.each_cell():
             x1 = cell.column * cell_size
