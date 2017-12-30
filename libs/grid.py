@@ -79,7 +79,7 @@ class Grid():
     """
     def prepare_grid(self):
         # Inerser row et col ?
-        self.grid = [[ None for x in range(0, self.rows)] for y in range(0, self.columns)]
+        self.grid = [[ None for x in range(0, self.columns)] for y in range(0, self.rows)]
         for r in range(0, self.rows):
             for c in range(0, self.columns):
                 self.grid[r][c] = Cell(r, c)
@@ -102,8 +102,8 @@ class Grid():
     Returns a random cell from the grid
     """
     def random_cell(self):
-        row = randint(0, self.rows)
-        col = randint(0, self.columns)
+        row = randint(0, self.rows - 1)
+        col = randint(0, self.columns - 1)
         return self[row, col]
 
     """

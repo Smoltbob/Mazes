@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from grid import *
 
-class Cylinder_grid(Grid):
+class Masked_grid(Grid):
 
     def __init(self, rows, columns):
        Grid.__init__(self, rows, columns)  
@@ -13,3 +13,4 @@ class Cylinder_grid(Grid):
         else:
             col = col % self.columns
             return self.grid[row][col]
+
